@@ -1,5 +1,6 @@
 repeat task.wait() until game:IsLoaded()
 repeat task.wait() until shared.GuiLibrary
+repeat task.wait() until shared.VapeExecuted 
 local uis = game:GetService("UserInputService")
 local GuiLibrary = shared.GuiLibrary
 local ScriptSettings = {}
