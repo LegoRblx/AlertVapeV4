@@ -46,7 +46,10 @@ GuiLibrary["MainGui"].ScaledGui.ClickGui.MainWindow.TextLabel.Text = "Alert | v 
 GuiLibrary["MainGui"].ScaledGui.ClickGui.Version.Version.Text = "Alert | v beta"
 GuiLibrary["MainGui"].ScaledGui.ClickGui.Version.Position = UDim2.new(1, -175 - 20, 1, -25)
 infonotify("Alert", "Loaded successfully!", 5)
-
+if shared.AlertLoaded = true then
+	return warnnotify("Alert","Alert already loaded")
+end
+shared.AlertLoaded = true
 
 
 
