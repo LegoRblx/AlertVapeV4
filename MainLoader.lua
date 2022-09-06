@@ -4,7 +4,7 @@ repeat task.wait() until shared.VapeExecuted and shared.VapeFullyLoaded
 wait(1)
 local a=syn and syn.queue_on_teleport or queue_on_teleport or fluxus and fluxus.queue_on_teleport or function()end
 game:GetService("Players").LocalPlayer.OnTeleport:Connect(function(b)
-		if b==Enum.TeleportState.Started then a("pcall(function() shared.AlertLoaded = false")
+		if b==Enum.TeleportState.Started then a("pcall(function() shared.AlertLoaded = false") end end)
 local uis = game:GetService("UserInputService")
 local GuiLibrary = shared.GuiLibrary
 local ScriptSettings = {}
@@ -50,7 +50,7 @@ GuiLibrary["MainGui"].ScaledGui.ClickGui.Version.Version.Text = "Alert | v beta"
 GuiLibrary["MainGui"].ScaledGui.ClickGui.Version.Position = UDim2.new(1, -175 - 20, 1, -25)
 if shared.AlertLoaded == true then
 	return infonotify("Alert", "Alert already loaded!", 5)
-	else
+else
 	infonotify("Alert", "Loaded successfully!", 5)
 end
 shared.AlertLoaded = true
