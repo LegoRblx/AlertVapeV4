@@ -4,7 +4,7 @@ repeat task.wait() until shared.VapeExecuted and shared.VapeFullyLoaded
 wait(1)
 local a=syn and syn.queue_on_teleport or queue_on_teleport or fluxus and fluxus.queue_on_teleport or function()end
 game:GetService("Players").LocalPlayer.OnTeleport:Connect(function(b)
-		if b==Enum.TeleportState.Started then a("pcall(function() shared.AlertLoaded = false") end end)
+		if b==Enum.TeleportState.Started then a("pcall(function() shared.AlertLoaded = false end)") end end)
 local uis = game:GetService("UserInputService")
 local GuiLibrary = shared.GuiLibrary
 local ScriptSettings = {}
