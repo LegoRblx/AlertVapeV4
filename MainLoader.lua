@@ -742,6 +742,7 @@ local Reinject = COB("Utility", {
 			pcall(function()
 				ScriptSettings.Reinject = false
 				GuiLibrary["SelfDestruct"]()
+						shared.AlertLoaded = false
 				if shared.DogV4Private_AutoExec then shared.Restart_Vape() else infonotify("Reinject", "You do not have Dog V4 Reinject supported.", "5") end
 			end)
 		end
