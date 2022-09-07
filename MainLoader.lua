@@ -128,7 +128,7 @@ local Infhp = COB("Blatant", {
 				local original_plr = game:GetService("Players").LocalPlayer.Character
 			pcall(function()
 				ScriptSettings.Infhp = true
-						repeat task.wait()
+						repeat task.wait(1)
 							local cam = workspace.CurrentCamera
 				local clone = game:GetService("Players").LocalPlayer.Character:Clone()
 				cam.CameraSubject = clone.Humanoid
@@ -145,7 +145,7 @@ local Infhp = COB("Blatant", {
 		end
 	end,
 	["Default"] = false,
-	["HoverText"] = "Uses bypasses to fly lagbacks"
+	["HoverText"] = "Inf hp"
 })
 
 local lobbyball = COB("Utility", {
