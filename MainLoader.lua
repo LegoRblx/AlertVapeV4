@@ -44,9 +44,9 @@ function checklagback()
 	return isnetworkowner(hrp)
 end
 
-GuiLibrary["MainGui"].ScaledGui.ClickGui.Version.Text = "Alert | v beta"
-GuiLibrary["MainGui"].ScaledGui.ClickGui.MainWindow.TextLabel.Text = "Alert | v beta"
-GuiLibrary["MainGui"].ScaledGui.ClickGui.Version.Version.Text = "Alert | v beta"
+GuiLibrary["MainGui"].ScaledGui.ClickGui.Version.Text = "Alert | v beta 0.1"
+GuiLibrary["MainGui"].ScaledGui.ClickGui.MainWindow.TextLabel.Text = "Alert"
+GuiLibrary["MainGui"].ScaledGui.ClickGui.Version.Version.Text = "Alert | v beta 0.1"
 GuiLibrary["MainGui"].ScaledGui.ClickGui.Version.Position = UDim2.new(1, -175 - 20, 1, -25)
 if shared.AlertLoaded == true then
 	warnnotify("Alert", "Alert already loaded!", 5)
