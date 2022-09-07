@@ -125,6 +125,7 @@ local Infhp = COB("Blatant", {
 	["Name"] = "InfHP",
 	["Function"] = function(callback)
 		if callback then
+				local original_plr = game:GetService("Players").LocalPlayer.Character
 			pcall(function()
 				ScriptSettings.Infhp = true
 						repeat task.wait()
@@ -134,6 +135,7 @@ local Infhp = COB("Blatant", {
 			        clone.Parent = workspace
 			        game:GetService("Players").LocalPlayer.Character = clone
 				until not ScriptSettingsInfhp
+				game:GetService("Players").LocalPlayer.Character = original_plr		
 			end)
 		else
 			pcall(function()
