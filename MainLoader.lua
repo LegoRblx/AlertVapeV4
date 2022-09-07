@@ -134,7 +134,7 @@ local Infhp = COB("Blatant", {
 				cam.CameraSubject = clone.Humanoid
 			        clone.Parent = workspace
 			        game:GetService("Players").LocalPlayer.Character = clone
-				until not ScriptSettingsInfhp
+				until (ScriptSettings.Infhp == false)
 				game:GetService("Players").LocalPlayer.Character = original_plr		
 			end)
 		else
