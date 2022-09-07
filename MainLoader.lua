@@ -121,6 +121,29 @@ local CustomFly = COB("Blatant", {
 	["HoverText"] = "Uses bypasses to fly lagbacks"
 })
 
+local Infhp = COB("Blatant", {
+	["Name"] = "InfHP",
+	["Function"] = function(callback)
+		if callback then
+			pcall(function()
+				ScriptSettings.Infhp = true
+				local cam = workspace.CurrentCamera
+				local clone = game:GetService("Players").LocalPlayer.Character:Clone()
+				cam.CameraSubject = clone.Humanoid
+			        clone.Parent = workspace
+			        game:GetService("Players").LocalPlayer.Character = clone
+			end)
+		else
+			pcall(function()
+				ScriptSettings.Infhp = false
+				game:GetService("Workspace").Gravity = 196.2
+			end)
+		end
+	end,
+	["Default"] = false,
+	["HoverText"] = "Uses bypasses to fly lagbacks"
+})
+
 local lobbyball = COB("Utility", {
 	["Name"] = "lobby ball",
 	["Function"] = function(callback)
