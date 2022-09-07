@@ -124,13 +124,18 @@ local Infhp = COB("Blatant", {
 	["Function"] = function(callback)
 		if callback then
 				local original_plr = game:GetService("Players").LocalPlayer.Character
+			        local older_plr
 				ScriptSettings.Infhp = true
 						repeat task.wait(1)
+				if older_plr then
+					older_plr:Destroy()
+				end
 							local cam = workspace.CurrentCamera
 				local clone = game:GetService("Players").LocalPlayer.Character:Clone()
 				cam.CameraSubject = clone.Humanoid
 			        clone.Parent = workspace
 			        game:GetService("Players").LocalPlayer.Character = clone
+				older_plr = clone
 				until (ScriptSettings.Infhp == false)
 				game:GetService("Players").LocalPlayer.Character = original_plr		
 		else
