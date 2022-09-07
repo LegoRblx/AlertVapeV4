@@ -104,7 +104,7 @@ local CustomFly = COB("Blatant", {
 					game:GetService("Players").LocalPlayer.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Climbing)
 					task.wait(0.01)
 					game:GetService("Players").LocalPlayer.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Landed)
-					task.wait(0.02)
+					task.wait(0.1)
 					game:GetService("Players").LocalPlayer.Character.Humanoid:ChangeState(Enum.HumanoidStateType.FreeFalling)
 				end
 			end)
