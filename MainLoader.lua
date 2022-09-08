@@ -117,15 +117,14 @@ local CustomFly = COB("Blatant", {
 	["Default"] = false,
 	["HoverText"] = "Uses bypasses to fly lagbacks"
 })
-local Infhp
-Infhp = COB("Utility", {
+local Infhp = COB("Utility", {
 	["Name"] = "InfHP",
 	["Function"] = function(callback)
 		if callback and ScriptSettings.Infhp == false then
 				local original_plr = workspace[game:GetService("Players").LocalPlayer.Name]
 			        local older_plr
 				ScriptSettings.Infhp = true
-				print(Infhp)
+				infonotify("infHp",Infhp,20)
 				Infhp["ToggleButton"](false)
 				repeat task.wait(1)
 				if older_plr then
