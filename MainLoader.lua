@@ -877,8 +877,9 @@ local CustomAntivoid = COB("Utility", {
 				part.Parent = game:GetService("Workspace")
 				part.CFrame = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame - Vector3.new(0,20,0)
 				ScriptSettings.CustomAntivoid_Part = part
+						local cframe
 				part.Touched:Connect(function(v)
-					if v.Parent:FindFirstChild("Humanoid") and v.Parent.Parent.Name == game:GetService("Players").LocalPlayer.Name and not v.Parent:FindFirstChild("Humanoid").Health == 0 then
+					if v.Parent:FindFirstChild("Humanoid") and v.Parent.Name == game:GetService("Players").LocalPlayer.Name and not v.Parent:FindFirstChild("Humanoid").Health == 0 then
 						game:GetService("Players").LocalPlayer.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
 						task.wait(0.12)
 						game:GetService("Players").LocalPlayer.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
@@ -886,16 +887,15 @@ local CustomAntivoid = COB("Utility", {
 						game:GetService("Players").LocalPlayer.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
 						task.wait(0.12)
 						game:GetService("Players").LocalPlayer.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
-						--[[
-							local tptimes = 0
-							repeat
-								task.wait()
-								tptimes = tptimes + 1
-								game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame / 2
-							until tptimes = 10
-						]]--
+									game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = cframe
 					end
 				end)
+							local tptimes = 0
+							repeat
+								task.wait(2)
+								tptimes = tptimes + 1
+								cframe = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame
+							until ScriptSettings.CustomAntivoid == false
 			end)
 		else
 			pcall(function()
