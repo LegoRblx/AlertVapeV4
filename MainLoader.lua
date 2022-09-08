@@ -98,14 +98,12 @@ local CustomFly = COB("Blatant", {
 				ScriptSettings.CustomFly = true
 				while task.wait() do
 							if not ScriptSettings.CustomFly == true then return end
-					pcall(function()
 					game:GetService("Workspace").Gravity = 0
 					game:GetService("Players").LocalPlayer.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
 					task.wait(0.04)
 					game:GetService("Players").LocalPlayer.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Climbing)
 					task.wait(0.01)
 					game:GetService("Players").LocalPlayer.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Landed))
-							end)
 				end
 			end)
 		else
