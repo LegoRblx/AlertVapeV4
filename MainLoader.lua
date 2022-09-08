@@ -117,8 +117,8 @@ local CustomFly = COB("Blatant", {
 	["Default"] = false,
 	["HoverText"] = "Uses bypasses to fly lagbacks"
 })
-
-local Infhp = COB("Utility", {
+local Infhp
+Infhp = COB("Utility", {
 	["Name"] = "InfHP",
 	["Function"] = function(callback)
 		if callback and ScriptSettings.Infhp == false then
