@@ -117,6 +117,7 @@ local CustomFly = COB("Blatant", {
 	["Default"] = false,
 	["HoverText"] = "Uses bypasses to fly lagbacks"
 })
+local new_
 local Infhp = COB("Utility", {
 	["Name"] = "InfHP",
 	["Function"] = function(callback)
@@ -124,19 +125,23 @@ local Infhp = COB("Utility", {
 				local original_plr = workspace[game:GetService("Players").LocalPlayer.Name]
 			        local older_plr
 				ScriptSettings.Infhp = true
-				infonotify("infHp",Infhp,20)
-				Infhp["ToggleButton"](false)
-				repeat task.wait(1)
+				new_["ToggleButton"](false)
+				while task.wait(1) do
+				pcall(function()
 				if older_plr then
 					older_plr:Destroy()
 				end
-							local cam = workspace.CurrentCamera
+				local cam = workspace.CurrentCamera
 				local clone = game:GetService("Players").LocalPlayer.Character:Clone()
 				cam.CameraSubject = clone.Humanoid
 			        clone.Parent = workspace
 			        game:GetService("Players").LocalPlayer.Character = clone
 				older_plr = clone
-				until (ScriptSettings.Infhp == false)
+				end)
+				if (ScriptSettings.Infhp == false) then
+				break
+				end
+				end
 				infonotify("InfHP","Disabled",10)
 				game:GetService("Players").LocalPlayer.Character = original_plr	
 		else
@@ -149,7 +154,7 @@ local Infhp = COB("Utility", {
 	["Default"] = false,
 	["HoverText"] = "Inf hp, in progress"
 })
-
+new_ = Infhp
 local lobbyball = COB("Utility", {
 	["Name"] = "lobby ball",
 	["Function"] = function(callback)
