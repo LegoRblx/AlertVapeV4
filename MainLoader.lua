@@ -125,6 +125,7 @@ local Infhp = COB("Utility", {
 				local original_plr = workspace[game:GetService("Players").LocalPlayer.Name]
 			        local older_plr
 				ScriptSettings.Infhp = true
+				print(Infhp)
 				Infhp["ToggleButton"](false)
 				repeat task.wait(1)
 				if older_plr then
@@ -147,7 +148,7 @@ local Infhp = COB("Utility", {
 		end
 	end,
 	["Default"] = false,
-	["HoverText"] = "Inf hp"
+	["HoverText"] = "Inf hp, in progress"
 })
 
 local lobbyball = COB("Utility", {
