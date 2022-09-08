@@ -877,7 +877,7 @@ local CustomAntivoid = COB("Utility", {
 				part.Parent = game:GetService("Workspace")
 				part.CFrame = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame - Vector3.new(0,20,0)
 				ScriptSettings.CustomAntivoid_Part = part
-						local cframe
+				local cframe
 				part.Touched:Connect(function(v)
 					if v.Parent:FindFirstChild("Humanoid") and v.Parent.Name == game:GetService("Players").LocalPlayer.Name then
 						game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = cframe
