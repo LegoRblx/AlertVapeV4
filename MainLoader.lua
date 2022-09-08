@@ -118,10 +118,10 @@ local CustomFly = COB("Blatant", {
 	["HoverText"] = "Uses bypasses to fly lagbacks"
 })
 
-local Infhp = COB("Blatant", {
+local Infhp = COB("Utility", {
 	["Name"] = "InfHP",
 	["Function"] = function(callback)
-		if callback then
+		if callback and ScriptSettings.Infhp == false then
 				local original_plr = game:GetService("Players").LocalPlayer.Character
 			        local older_plr
 				ScriptSettings.Infhp = true
@@ -136,7 +136,8 @@ local Infhp = COB("Blatant", {
 			        game:GetService("Players").LocalPlayer.Character = clone
 				older_plr = clone
 				until (ScriptSettings.Infhp == false)
-				game:GetService("Players").LocalPlayer.Character = original_plr		
+				game:GetService("Players").LocalPlayer.Character = original_plr	
+				Infhp["ToggleButton"](false)
 		else
 			pcall(function()
 				ScriptSettings.Infhp = false
