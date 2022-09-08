@@ -8,7 +8,7 @@ local uis = game:GetService("UserInputService")
 local GuiLibrary = shared.GuiLibrary
 local ScriptSettings = {}
 local UIS = game:GetService("UserInputService")
-local COB = function(tab, argstable) 
+local function COB(tab, argstable) 
 	return GuiLibrary["ObjectsThatCanBeSaved"][tab.."Window"]["Api"].CreateOptionsButton(argstable)
 end
 function securefunc(func)
