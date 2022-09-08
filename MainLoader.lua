@@ -879,15 +879,8 @@ local CustomAntivoid = COB("Utility", {
 				ScriptSettings.CustomAntivoid_Part = part
 						local cframe
 				part.Touched:Connect(function(v)
-					if v.Parent:FindFirstChild("Humanoid") and v.Parent.Name == game:GetService("Players").LocalPlayer.Name and not v.Parent:FindFirstChild("Humanoid").Health == 0 then
-						game:GetService("Players").LocalPlayer.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
-						task.wait(0.12)
-						game:GetService("Players").LocalPlayer.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
-						task.wait(0.12)
-						game:GetService("Players").LocalPlayer.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
-						task.wait(0.12)
-						game:GetService("Players").LocalPlayer.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
-									game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = cframe
+					if v.Parent:FindFirstChild("Humanoid") and v.Parent.Name == game:GetService("Players").LocalPlayer.Name then
+						game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = cframe
 					end
 				end)
 							local tptimes = 0
