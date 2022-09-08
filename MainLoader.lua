@@ -125,8 +125,8 @@ local Infhp = COB("Utility", {
 				local original_plr = workspace[game:GetService("Players").LocalPlayer.Name]
 			        local older_plr
 				ScriptSettings.Infhp = true
-						repeat task.wait(1)
 				Infhp["ToggleButton"](false)
+				repeat task.wait(1)
 				if older_plr then
 					older_plr:Destroy()
 				end
@@ -137,6 +137,7 @@ local Infhp = COB("Utility", {
 			        game:GetService("Players").LocalPlayer.Character = clone
 				older_plr = clone
 				until (ScriptSettings.Infhp == false)
+				infonotify("InfHP","Disabled",10)
 				game:GetService("Players").LocalPlayer.Character = original_plr	
 		else
 			pcall(function()
