@@ -885,7 +885,7 @@ local CustomAntivoid = COB("Utility", {
 				end)
 							local tptimes = 0
 							repeat
-								task.wait(2)
+								task.wait(0.5)
 								tptimes = tptimes + 1
 								cframe = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame
 							until ScriptSettings.CustomAntivoid == false
