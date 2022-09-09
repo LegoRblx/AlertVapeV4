@@ -1022,17 +1022,18 @@ local InviteCrash = COB("Utility", {
 	["Name"] = "InviteCrash",
 	["Function"] = function(callback)
 		if callback then
-			pcall(function()
 				ScriptSettings.InviteCrash = true
+				pcall(function()
 				while task.wait() do
-					if ScriptSettings.InviteCrash == false then return end
+					if not ScriptSettings.InviteCrash == true then return end
 					for i,v in pairs(game:GetService("Players"):GetChildren()) do
 						if v.Name == game:GetService("Players").LocalPlayer.Name then
+						else
 							game:GetService("ReplicatedStorage")["events-@easy-games/lobby:shared/event/lobby-events@getEvents.Events"].inviteToParty:FireServer({["player"] = game:GetService("Players")[v.Name],})
 						end
 					end
 				end
-			end)
+				end)
 		else
 			pcall(function()
 				ScriptSettings.InviteCrash = false
