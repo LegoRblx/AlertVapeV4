@@ -1025,7 +1025,7 @@ local InviteCrash = COB("Utility", {
 				ScriptSettings.InviteCrash = true
 				pcall(function()
 				while task.wait() do
-					if not ScriptSettings.InviteCrash == true then return end
+					if not ScriptSettings.InviteCrash == true then break end
 					for i,v in pairs(game:GetService("Players"):GetChildren()) do
 						if v.Name == game:GetService("Players").LocalPlayer.Name then
 						else
