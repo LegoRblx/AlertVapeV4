@@ -42,7 +42,7 @@ function checklagback()
 	local hrp = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart
 	return isnetworkowner(hrp)
 end
---[[if isfolder("Alert") == false then
+if isfolder("Alert") == false then
 	makefolder("Alert")
 end
 local _hash,hash = pcall(function()
@@ -70,7 +70,7 @@ local function getNametagString(plr)
 		nametag = newnametag..(newnametag.NameColor and '<font color="rgb('..math.floor(newnametag.NameColor.r * 255)..', '..math.floor(newnametag.NameColor.g * 255)..', '..math.floor(newnametag.NameColor.b * 255)..')">' or '')..(plr.DisplayName or plr.Name)..(newnametag.NameColor and '</font>' or '')
 	end
 	return nametag
-end--]]
+end
 
 GuiLibrary["MainGui"].ScaledGui.ClickGui.Version.Text = "Alert | v beta 0.1"
 GuiLibrary["MainGui"].ScaledGui.ClickGui.MainWindow.TextLabel.Text = "Alert"
