@@ -23,11 +23,11 @@ function securefunc(func)
 	end)
 end
 function warnnotify(title, content, duration)
-	local frame = GuiLibrary["CreateNotification"](title or "Windows", content or "(No Content Given)", duration or 5, "assets/WarningNotification.png")
+	local frame = GuiLibrary["CreateNotification"](title or "Alert", content or "(No Content Given)", duration or 5, "assets/WarningNotification.png")
 	frame.Frame.Frame.ImageColor3 = Color3.fromRGB(255, 64, 64)
 end
 function infonotify(title, content, duration)
-	local frame = GuiLibrary["CreateNotification"](title or "Windows", content or "(No Content Given)", duration or 5, "assets/InfoNotification.png")
+	local frame = GuiLibrary["CreateNotification"](title or "Alert", content or "(No Content Given)", duration or 5, "assets/InfoNotification.png")
 	frame.Frame.Frame.ImageColor3 = Color3.fromRGB(255, 64, 64)
 end
 function getstate()
