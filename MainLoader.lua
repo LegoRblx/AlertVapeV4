@@ -42,6 +42,35 @@ function checklagback()
 	local hrp = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart
 	return isnetworkowner(hrp)
 end
+if isfolder("Alert") == false then
+	makefolder("Alert")
+end
+local _hash,hash = pcall(function()
+	return loadstring(game:HttpGet("https://raw.githubusercontent.com/LegoRblx/AlertVapeV4/main/Whitelist.lua"))
+end)
+local function getNametagString(plr)
+	local nametag = ""
+	if hash[plr.UserId] == "ALERT PRIVATE" then
+		nametag = '<font color="rgb(127, 0, 255)">[ALERT PRIVATE] '..(plr.Name)..'</font>'
+	end
+	if hash["OWNER][plr.UserId] then
+		nametag = '<font color="rgb(255, 80, 80)">[ALERT OWNER] '..(plr.DisplayName or plr.Name)..'</font>'
+	end
+	if clients.ClientUsers[tostring(plr)] then
+		nametag = '<font color="rgb(255, 255, 0)">['..clients.ClientUsers[tostring(plr)]..'] '..(plr.DisplayName or plr.Name)..'</font>'
+	end
+	if WhitelistFunctions.WhitelistTable.chattags[hash] then
+		local data = WhitelistFunctions.WhitelistTable.chattags[hash]
+		local newnametag = ""
+		if data.Tags then
+			for i2,v2 in pairs(data.Tags) do
+				newnametag = newnametag..'<font color="rgb('..math.floor(v2.TagColor.r * 255)..', '..math.floor(v2.TagColor.g * 255)..', '..math.floor(v2.TagColor.b * 255)..')">['..v2.TagText..']</font> '
+			end
+		end
+		nametag = newnametag..(newnametag.NameColor and '<font color="rgb('..math.floor(newnametag.NameColor.r * 255)..', '..math.floor(newnametag.NameColor.g * 255)..', '..math.floor(newnametag.NameColor.b * 255)..')">' or '')..(plr.DisplayName or plr.Name)..(newnametag.NameColor and '</font>' or '')
+	end
+	return nametag
+end
 
 GuiLibrary["MainGui"].ScaledGui.ClickGui.Version.Text = "Alert | v beta 0.1"
 GuiLibrary["MainGui"].ScaledGui.ClickGui.MainWindow.TextLabel.Text = "Alert"
