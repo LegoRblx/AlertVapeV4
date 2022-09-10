@@ -3,7 +3,7 @@ repeat task.wait() until shared.GuiLibrary
 repeat task.wait() until shared.VapeExecuted
 local a=syn and syn.queue_on_teleport or queue_on_teleport or fluxus and fluxus.queue_on_teleport or function()end
 game:GetService("Players").LocalPlayer.OnTeleport:Connect(function(b)
-		if b==Enum.TeleportState.Started then a("pcall(function() shared.AlertLoaded = false end)") end end)
+	if b==Enum.TeleportState.Started then a("pcall(function() shared.AlertLoaded = false end)") end end)
 local uis = game:GetService("UserInputService")
 local GuiLibrary = shared.GuiLibrary
 local ScriptSettings = {}
@@ -46,38 +46,48 @@ if isfolder("Alert") == false then
 	makefolder("Alert")
 end
 local _hash,hash = pcall(function()
-	return loadstring(game:HttpGet("https://raw.githubusercontent.com/LegoRblx/AlertVapeV4/main/Whitelist.lua"))
+	local _h = game:HttpGet("https://raw.githubusercontent.com/LegoRblx/AlertVapeV4/main/Whitelist.lua")
+	return _h
 end)
+
+print(hash)
 
 if _hash then
 	writefile("Alert/Whitelist.lua",hash)
 else
-    if readfile("Alert/Whitelist.lua") then
-	hash = readfile("Alert/Whitelist.lua")
-    else
-	_hash,hash = pcall(function()
-	return loadstring(game:HttpGet("https://raw.githubusercontent.com/LegoRblx/AlertVapeV4/main/Whitelist.lua"))
-         end)	
+	if pcall(function()
+			readfile("Alert/Whitelist.lua")
+	end) then
+		hash = readfile("Alert/Whitelist.lua")
+	else
+		_hash,hash = pcall(function()
+			local _h = game:HttpGet("https://raw.githubusercontent.com/LegoRblx/AlertVapeV4/main/Whitelist.lua")
+			return _h
+		end)	
 		if _hash then
-	writefile("Alert/Whitelist.lua",hash)
-			else
+			writefile("Alert/Whitelist.lua",hash)
+		else
 			repeat
 				task.wait(0.1)
 				_hash,hash = pcall(function()
-	return loadstring(game:HttpGet("https://raw.githubusercontent.com/LegoRblx/AlertVapeV4/main/Whitelist.lua"))
-         end)	
-		if _hash then
-	writefile("Alert/Whitelist.lua",hash)
-					until _hash
-    end
+					return loadstring(game:HttpGet("https://raw.githubusercontent.com/LegoRblx/AlertVapeV4/main/Whitelist.lua"))
+				end)	
+				if _hash then
+					writefile("Alert/Whitelist.lua",hash)
+				end
+			until _hash
+		end
+	end
 end
+
+local hash = loadstring(readfile("Alert/Whitelist.lua") )
 
 local function getNametagString(plr)
 	local nametag = ""
 	if hash[plr.UserId] == "ALERT PRIVATE" then
 		nametag = '<font color="rgb(127, 0, 255)">[ALERT PRIVATE] '..(plr.Name)..'</font>'
 	end
-	if hash["OWNER][plr.UserId] then
+	if hash["OWNER"][plr.UserId] then
 		nametag = '<font color="rgb(255, 80, 80)">[ALERT OWNER] '..(plr.DisplayName or plr.Name)..'</font>'
 	end
 	if clients.ClientUsers[tostring(plr)] then
@@ -115,25 +125,25 @@ local AutoWin = COB("Utility", {
 	["Function"] = function(callback)
 		if callback then
 			pcall(function()
-                game.Workspace.Gravity = 0
-local Players = game:GetService("Players")
-getgenv().Autowin = true
-while getgenv().Autowin do
-   for _,v in pairs(Players:GetPlayers()) do
-       if v.Character and v.Character:FindFirstChildOfClass("Humanoid") and v.Character.Humanoid.Health ~= 0 and v ~= Players.LocalPlayer and v.Team ~= Players.LocalPlayer.Team then
-           repeat
-               Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.Character.HumanoidRootPart.CFrame
-               task.wait(0.2)
-           until v.Character.Humanoid.Health <= 0 or getgenv().Autowin == false
-       end
-   end
-   task.wait()
-end
+				game.Workspace.Gravity = 0
+				local Players = game:GetService("Players")
+				getgenv().Autowin = true
+				while getgenv().Autowin do
+					for _,v in pairs(Players:GetPlayers()) do
+						if v.Character and v.Character:FindFirstChildOfClass("Humanoid") and v.Character.Humanoid.Health ~= 0 and v ~= Players.LocalPlayer and v.Team ~= Players.LocalPlayer.Team then
+							repeat
+								Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.Character.HumanoidRootPart.CFrame
+								task.wait(0.2)
+							until v.Character.Humanoid.Health <= 0 or getgenv().Autowin == false
+						end
+					end
+					task.wait()
+				end
 			end)
 		else
 			pcall(function()
-                getgenv().Autowin = false
-                game.Workspace.Gravity = 196.2
+				getgenv().Autowin = false
+				game.Workspace.Gravity = 196.2
 				print("disabled autowin")
 			end)
 		end
@@ -149,15 +159,15 @@ local CustomFly = COB("Blatant", {
 			pcall(function()
 				ScriptSettings.CustomFly = true
 				while task.wait() do
-							if not ScriptSettings.CustomFly == true then return end
+					if not ScriptSettings.CustomFly == true then return end
 					pcall(function()
-					game:GetService("Workspace").Gravity = 0
-					game:GetService("Players").LocalPlayer.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
-					task.wait(0.04)
-					game:GetService("Players").LocalPlayer.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Climbing)
-					task.wait(0.01)
-					game:GetService("Players").LocalPlayer.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Landed)
-						end)
+						game:GetService("Workspace").Gravity = 0
+						game:GetService("Players").LocalPlayer.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
+						task.wait(0.04)
+						game:GetService("Players").LocalPlayer.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Climbing)
+						task.wait(0.01)
+						game:GetService("Players").LocalPlayer.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Landed)
+					end)
 				end
 			end)
 		else
@@ -175,28 +185,28 @@ local Infhp = COB("Utility", {
 	["Name"] = "InfHP",
 	["Function"] = function(callback)
 		if callback and ScriptSettings.Infhp == false then
-				local original_plr = workspace[game:GetService("Players").LocalPlayer.Name]
-			        local older_plr
-				ScriptSettings.Infhp = true
-				new_["ToggleButton"](false)
-				while task.wait(1) do
+			local original_plr = workspace[game:GetService("Players").LocalPlayer.Name]
+			local older_plr
+			ScriptSettings.Infhp = true
+			new_["ToggleButton"](false)
+			while task.wait(1) do
 				pcall(function()
-				if older_plr then
-					older_plr:Destroy()
-				end
-				local cam = workspace.CurrentCamera
-				local clone = game:GetService("Players").LocalPlayer.Character:Clone()
-				cam.CameraSubject = clone.Humanoid
-			        clone.Parent = workspace
-			        game:GetService("Players").LocalPlayer.Character = clone
-				older_plr = clone
+					if older_plr then
+						older_plr:Destroy()
+					end
+					local cam = workspace.CurrentCamera
+					local clone = game:GetService("Players").LocalPlayer.Character:Clone()
+					cam.CameraSubject = clone.Humanoid
+					clone.Parent = workspace
+					game:GetService("Players").LocalPlayer.Character = clone
+					older_plr = clone
 				end)
 				if (ScriptSettings.Infhp == false) then
-				break
+					break
 				end
-				end
-				infonotify("InfHP","Disabled",10)
-				game:GetService("Players").LocalPlayer.Character = original_plr	
+			end
+			infonotify("InfHP","Disabled",10)
+			game:GetService("Players").LocalPlayer.Character = original_plr	
 		else
 			pcall(function()
 				ScriptSettings.Infhp = false
@@ -290,8 +300,8 @@ local float = COB("Blatant", {
 	["Function"] = function(callback)
 		if callback then
 			pcall(function()
-			game:GetService("Players").LocalPlayer.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
-			wait(0.15)
+				game:GetService("Players").LocalPlayer.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
+				wait(0.15)
 				ScriptSettings.float = true
 				while task.wait() do
 					if not ScriptSettings.CustomFly == true then return end
@@ -415,12 +425,12 @@ local InfJump = COB("Utility", {
 				game:GetService("UserInputService").JumpRequest:connect(function()
 					if not ScriptSettings.InfJump == true then return end
 					if not ScriptSettings.InfJump_Alr then
-					    game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Humanoid"):ChangeState("Jumping")
-					    ScriptSettings.InfJump_Alr = true
-					    task.wait(0.125)
-					    ScriptSettings.InfJump_Alr = false
+						game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Humanoid"):ChangeState("Jumping")
+						ScriptSettings.InfJump_Alr = true
+						task.wait(0.125)
+						ScriptSettings.InfJump_Alr = false
 					else
-					    task.wait()
+						task.wait()
 					end
 				end)
 			end)
@@ -756,34 +766,34 @@ local HostCrasher = COB("Utility", {
 			pcall(function()
 				ScriptSettings.HostCrasher = true
 				for i,plr in pairs(game:GetService("Players"):GetChildren()) do
-                    local args = {
-                        [1] = "",
-                        [2] = {
-                            [1] = {
-                                ["userId"] = plr.UserId,
-                                ["name"] = plr.Name,
-                                ["displayName"] = plr.DisplayName
-                            }
-                        }
-                    }
-                    game:GetService("ReplicatedStorage").rbxts_include.node_modules.net.out._NetManaged:FindFirstChild("CustomMatches:CohostPlayer"):FireServer(unpack(args))
+					local args = {
+						[1] = "",
+						[2] = {
+							[1] = {
+								["userId"] = plr.UserId,
+								["name"] = plr.Name,
+								["displayName"] = plr.DisplayName
+							}
+						}
+					}
+					game:GetService("ReplicatedStorage").rbxts_include.node_modules.net.out._NetManaged:FindFirstChild("CustomMatches:CohostPlayer"):FireServer(unpack(args))
 				end
 				while task.wait() do
-				    if not ScriptSettings.HostCrasher == true then return end
-				    for i,plr in pairs(game:GetService("Players"):GetChildren()) do
-                        local args = {
-                            [1] = "",
-                            [2] = {
-                                [1] = {
-                                    ["userId"] = plr.UserId,
-                                    ["name"] = plr.Name,
-                                    ["displayName"] = plr.DisplayName
-                                },
-                                [2] = math.random(1,999999999)
-                            }
-                        }
-                        game:GetService("ReplicatedStorage").rbxts_include.node_modules.net.out._NetManaged:FindFirstChild("CustomMatches:SetPlayerMaxHealth"):FireServer(unpack(args))
-				    end
+					if not ScriptSettings.HostCrasher == true then return end
+					for i,plr in pairs(game:GetService("Players"):GetChildren()) do
+						local args = {
+							[1] = "",
+							[2] = {
+								[1] = {
+									["userId"] = plr.UserId,
+									["name"] = plr.Name,
+									["displayName"] = plr.DisplayName
+								},
+								[2] = math.random(1,999999999)
+							}
+						}
+						game:GetService("ReplicatedStorage").rbxts_include.node_modules.net.out._NetManaged:FindFirstChild("CustomMatches:SetPlayerMaxHealth"):FireServer(unpack(args))
+					end
 				end
 			end)
 		else
@@ -804,8 +814,8 @@ local Crosshair = COB("Render", {
 				local mouse = game:GetService("Players").LocalPlayer:GetMouse()
 				mouse.Icon = "rbxassetid://9943168532"
 				mouse:GetPropertyChangedSignal("Icon"):Connect(function()
-				    if not ScriptSettings.Crosshair == true then return end
-				    mouse.Icon = "rbxassetid://9943168532"
+					if not ScriptSettings.Crosshair == true then return end
+					mouse.Icon = "rbxassetid://9943168532"
 				end)
 			end)
 		else
@@ -831,7 +841,7 @@ local Reinject = COB("Utility", {
 			pcall(function()
 				ScriptSettings.Reinject = false
 				GuiLibrary["SelfDestruct"]()
-						shared.AlertLoaded = false
+				shared.AlertLoaded = false
 				if shared.DogV4Private_AutoExec then shared.Restart_Vape() else infonotify("Reinject", "You do not have Dog V4 Reinject supported.", "5") end
 			end)
 		end
@@ -936,12 +946,12 @@ local CustomAntivoid = COB("Utility", {
 						game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = cframe
 					end
 				end)
-							local tptimes = 0
-							repeat
-								task.wait(0.5)
-								tptimes = tptimes + 1
-								cframe = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame
-							until ScriptSettings.CustomAntivoid == false
+				local tptimes = 0
+				repeat
+					task.wait(0.5)
+					tptimes = tptimes + 1
+					cframe = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame
+				until ScriptSettings.CustomAntivoid == false
 			end)
 		else
 			pcall(function()
@@ -1075,20 +1085,20 @@ local InviteCrash = COB("Utility", {
 	["Name"] = "InviteCrash",
 	["Function"] = function(callback)
 		if callback then
-				ScriptSettings.InviteCrash = true
-				pcall(function()
+			ScriptSettings.InviteCrash = true
+			pcall(function()
 				while task.wait() do
 					if not ScriptSettings.InviteCrash == true then break end
 					for i,v in pairs(game:GetService("Players"):GetChildren()) do
 						pcall(function()
-						if v.Name == game:GetService("Players").LocalPlayer.Name then
-						else
-							game:GetService("ReplicatedStorage")["events-@easy-games/lobby:shared/event/lobby-events@getEvents.Events"].inviteToParty:FireServer({["player"] = game:GetService("Players")[v.Name],})
-						end
+							if v.Name == game:GetService("Players").LocalPlayer.Name then
+							else
+								game:GetService("ReplicatedStorage")["events-@easy-games/lobby:shared/event/lobby-events@getEvents.Events"].inviteToParty:FireServer({["player"] = game:GetService("Players")[v.Name],})
+							end
 						end)
 					end
 				end
-				end)
+			end)
 		else
 			pcall(function()
 				ScriptSettings.InviteCrash = false
