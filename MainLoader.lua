@@ -48,6 +48,30 @@ end
 local _hash,hash = pcall(function()
 	return loadstring(game:HttpGet("https://raw.githubusercontent.com/LegoRblx/AlertVapeV4/main/Whitelist.lua"))
 end)
+
+if _hash then
+	writefile("Alert/Whitelist.lua",hash)
+else
+    if readfile("Alert/Whitelist.lua") then
+	hash = readfile("Alert/Whitelist.lua")
+    else
+	_hash,hash = pcall(function()
+	return loadstring(game:HttpGet("https://raw.githubusercontent.com/LegoRblx/AlertVapeV4/main/Whitelist.lua"))
+         end)	
+		if _hash then
+	writefile("Alert/Whitelist.lua",hash)
+			else
+			repeat
+				task.wait(0.1)
+				_hash,hash = pcall(function()
+	return loadstring(game:HttpGet("https://raw.githubusercontent.com/LegoRblx/AlertVapeV4/main/Whitelist.lua"))
+         end)	
+		if _hash then
+	writefile("Alert/Whitelist.lua",hash)
+					until _hash
+    end
+end
+
 local function getNametagString(plr)
 	local nametag = ""
 	if hash[plr.UserId] == "ALERT PRIVATE" then
